@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <style>
+        [v-cloak]{
+            background-color:red;
+        }
+    </style>
+
+    </head>
+    <body>
+        <div id="app">
+            <!--Vue directives-->
+            <h1>{{message}}</h1><!--displays predefined information-->
+            <h2 v-text="greet"></h2><!--displays predefined information-->
+            <h2 v-html="intro"></h2><!--shows pre defined information and interpretes html tags-->
+            <h3 v-show="viewed">You have viewed this page</h3><!--shows the statement in the tag once condition is true-->
+            <h3 v-if="viewed == viewed2">You have viewed this page before</h3><!--works like if statement-->
+            <h3 v-else>You have NOT viewed this page</h3> <!--works like else statement-->
+            <h3 v-pre>{{message}}</h3> <!--shows with the curly brace-->
+            <h3 v-once>{{message}}</h3> <!--renders message only once and cannot be changed from browser console-->
+            <h3 v-cloak>{{message}}</h3> <!--allows you use css to set a style while vue loads. This is to prevent people seeing the {{}} mark-->
+        </div>
+    </body>
+
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue World',
+                greet: "Good morning",
+                intro: "This allows <small>tags</small>",
+                viewed: true,
+                viewed2: false
+            }
+        })
+    </script>
+</html>

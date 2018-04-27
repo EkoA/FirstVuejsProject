@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <style>
+        [v-cloak]{
+            background-color:red;
+        }
+    </style>
+
+    </head>
+    <body>
+        <div id="app">
+            <!--Vue Bind-->
+            <h1 v-bind:title="title">{{message}}</h1>
+            <img v-bind:src="url" v-bind:alt="title" v-bind:title="title" width="100px"/>
+            <img :src="url" :alt="title" :title="title" width="100px"/> <!--you don't have to write "V-bind"-->
+
+            <ul>
+                <li v-for="todo in todos">{{todo.id}} | {{todo.text}}</li><!-- loops through the todos array -->
+            </ul>
+
+            <ul>
+                <li v-for="count in count">Hello</li><!-- displays "Hello" 3 times(based on number of count)-->
+            </ul>
+
+            <input type="text" v-model="message"/><!-- the value of this form is bound to the message data model i.e 2-way binding-->
+        </div>
+    </body>
+
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue World',
+                title: "You loaded this page on " + new Date,
+                url: "http://vuejs.org/images/logo.png",
+                todos:[
+                    {text: 'Learn Vue', id: 1},
+                    {text: 'Practice', id: 2},
+                    {text: 'Develop', id: 3}
+                ],
+                count: 3
+            }
+        })
+    </script>
+</html>

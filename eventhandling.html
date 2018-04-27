@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div id="app">
+            <h1>Count: {{count}}</h1>
+            <h3 v-if="count <= 0">{{message}}</h3>
+            <!--<input type="text" v-model="message" />-->
+            <!-- <button v-on:click="countUp" class="btn btn-primary">Count Up</button> one way tl use event handlers-->
+            <button @click="countUp" class="btn btn-primary">Count Up</button>
+            <button @click="countDown" class="btn btn-primary">Count Down</button>
+            <hr>
+
+            <h1>{{message}}</h1>
+            <p>
+                Visit: <a :href="url">{{newurl}}</a>
+            </p>
+            <input type="text" class="form-control" v-model="url" />
+            <button @click="cleanUrl" class="btn btn-primary">Clean Link</button>
+            <hr>
+
+            <p>
+                Sum: {{sum}}
+            </p>
+            <input type="number" class="form-control" v-model="num1" />
+            <input type="number" class="form-control" v-model="num2" />
+            <button @click="add" class="btn btn-primary">Add</button>            
+        </div>
+    </body>
+
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue World',
+                count: 0,
+                url: "",
+                newurl: "",
+                num1: "",
+                num2: "",
+                sum: ""
+            },
+            methods: {
+                countUp:function()
+                {
+                    this.count += 1;
+                },
+                countDown:function()
+                {
+                    this.count -= 1;
+                },
+                cleanUrl:function()
+                {
+                    this.newurl = this.url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+                },
+                add:function()
+                {
+                    this.sum = +this.num1 + +this.num2;
+                }
+            }
+        })
+    </script>
+</html>
